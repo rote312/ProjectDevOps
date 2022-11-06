@@ -1,4 +1,4 @@
-//declaring the Sapak i am working with (the suppplier of the cloud)
+
 terraform {
   required_providers {
     aws = {
@@ -7,14 +7,14 @@ terraform {
     }
   }
 }
-//Setting the region to New York
+
 provider "aws" {
   region = "us-east-1"
 
 }
 
-//creating a vpc:
-resource "aws_vpc" "RotemYehudai-dev-vpc" { //was called testing
+
+resource "aws_vpc" "RotemYehudai-dev-vpc" { 
   cidr_block = "192.168.1.0/24"
   tags = {
     "Name" = "RotemYehudai-dev-vpc"
@@ -31,7 +31,7 @@ resource "aws_internet_gateway" "igw" {
 
 resource "aws_subnet" "RotemYehudai-k8s-subnet" {
   vpc_id     = aws_vpc.RotemYehudai-dev-vpc.id
-  cidr_block = "192.168.1.0/27" //meaning the addresses are: 0-31
+  cidr_block = "192.168.1.0/27" 
 
   tags = {
     "Name" = "RotemYehudai-k8s-subnet"
